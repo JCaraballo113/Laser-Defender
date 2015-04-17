@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int Health = 3;
+    public float Health = 300f;
 
     private FormationController _formationController;
 
@@ -12,14 +12,20 @@ public class EnemyHealth : MonoBehaviour
         _formationController = gameObject.GetComponentInParent<FormationController>();
     }
 
-    public void Damage(int points)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Health -= points;
+        Projectile laser = other.gameObject.GetComponent<Projectile>();
 
-        if (Health <= 0)
+        if (laser)
         {
-            _formationController.EnemyDestroyed();
-            Destroy(gameObject);
+            Health -= laser.GetDamage();
+            laser.Hit();
+
+            if (Health <= 0f)
+            {
+                _formationController.EnemyDestroyed();
+                Destroy(gameObject);
+            }
         }
     }
 }
