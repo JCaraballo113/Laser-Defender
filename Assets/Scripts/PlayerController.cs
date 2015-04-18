@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanControl)
         {
-            Destroy(gameObject.GetComponent<Animator>(),1f);
+            Destroy(gameObject.GetComponent<Animator>(),0.2f);
         }
 
         float horizontal = Input.GetAxisRaw("Horizontal");

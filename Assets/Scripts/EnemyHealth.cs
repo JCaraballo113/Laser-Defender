@@ -4,6 +4,14 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour
 {
     public float Health = 300f;
+    public short killPoints = 150;
+
+    private ScoreKeeper _scoreKeeper;
+
+    void Start()
+    {
+        _scoreKeeper = GameObject.FindObjectOfType<ScoreKeeper>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (Health <= 0f)
             {
+                _scoreKeeper.UpdateScore(killPoints);
                 Destroy(gameObject);
             }
         }
