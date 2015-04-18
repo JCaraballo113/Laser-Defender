@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float MoveSpeed = 15.0f;
     public float Padding = 1f;
+    public bool CanControl = false;
 
     private float xMax, xMin;
 
@@ -20,11 +21,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (CanControl)
+        {
+            Destroy(gameObject.GetComponent<Animator>(),1f);
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         if (horizontal != 0)
         {
-            Move(horizontal);
+                Move(horizontal);
+            
         }
     }
 
