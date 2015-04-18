@@ -8,10 +8,10 @@ public class FormationController : MonoBehaviour
     public float height = 5.68f;
     public float moveSpeed = 15f;
     public float offset = 0f; // Offset to use so the formation does not surpass screen's width
+    public float spawnDelay = 1f;
 
     private float _screenXMax, _screenXMin;
     private short _direction = 1;
-    private short _enemyCount = 0;
 
     void Start()
     {
@@ -20,12 +20,7 @@ public class FormationController : MonoBehaviour
         _screenXMin = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 0f)).x;
         offset = (width/2);
 
-        foreach (Transform childTransform in transform)
-        {
-            GameObject enemy = Instantiate(EnemyPrefab, childTransform.position, Quaternion.identity) as GameObject;
-            enemy.transform.parent = childTransform.transform;
-            _enemyCount++;
-        }
+        SpawnUntilFull();
     }
 
     void Update()
@@ -44,6 +39,11 @@ public class FormationController : MonoBehaviour
         else if (xPosFormation - offset < _screenXMin)
         {
             _direction = 1;
+        }
+
+        if (AllMembersAreDead())
+        {
+            SpawnUntilFull();
         }
     }
 
@@ -67,13 +67,57 @@ public class FormationController : MonoBehaviour
         this.transform.position += moveVector;
     }
 
-    public void EnemyDestroyed()
+    bool AllMembersAreDead()
     {
-        _enemyCount--;
-
-        if (_enemyCount <= 0)
+        foreach (Transform positionTransform in transform)
         {
-            Destroy(gameObject);
+            if (positionTransform.childCount > 0)
+            {
+                return false;
+            }
         }
+
+        return true;
+    }
+
+    void SpawnUntilFull()
+    {
+        Transform nextTransform = NextFreePosition();
+        if (nextTransform)
+        {
+            GameObject enemy = Instantiate(EnemyPrefab, nextTransform.position, Quaternion.identity) as GameObject;
+            if (enemy != null) enemy.transform.parent = nextTransform.transform;
+        }
+
+        if (FreePositionExists())
+        {
+            Invoke("SpawnUntilFull",spawnDelay);
+        }
+    }
+
+    bool FreePositionExists()
+    {
+        foreach (Transform childTransform in transform)
+        {
+            if (childTransform.childCount > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    Transform NextFreePosition()
+    {
+        foreach (Transform positionTransform in transform)
+        {
+            if (positionTransform.childCount <= 0)
+            {
+                return positionTransform;
+            }
+        }
+
+        return null;
     }
 }

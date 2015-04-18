@@ -5,13 +5,6 @@ public class EnemyHealth : MonoBehaviour
 {
     public float Health = 300f;
 
-    private FormationController _formationController;
-
-    void Start()
-    {
-        _formationController = gameObject.GetComponentInParent<FormationController>();
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         Projectile laser = other.gameObject.GetComponent<Projectile>();
@@ -23,7 +16,6 @@ public class EnemyHealth : MonoBehaviour
 
             if (Health <= 0f)
             {
-                _formationController.EnemyDestroyed();
                 Destroy(gameObject);
             }
         }
