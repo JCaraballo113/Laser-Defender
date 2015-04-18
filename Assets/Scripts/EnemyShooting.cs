@@ -7,23 +7,20 @@ public class EnemyShooting : MonoBehaviour
     public float LaserSpeed = 20f;
     public AudioClip ShotAudioClip;
 
-    private float _timer = 0f;
-    private float _fireRate = 0f;
+    private float _fireRate = 0.5f;
 
 
     void Update()
     {
-        _timer += Time.deltaTime;
-        _fireRate = Random.Range(1f, 10f);
+        float probability = Time.deltaTime*_fireRate;
 
-        if (_timer >= _fireRate)
+        if (Random.value < probability)
         {
-            _timer = 0f;
-            Shoot();
+            Fire();
         }
     }
 
-    void Shoot()
+    void Fire()
     {
         AudioSource.PlayClipAtPoint(ShotAudioClip,transform.position);
         GameObject enemyLaser = Instantiate(LaserPrefab, transform.position, Quaternion.identity) as GameObject;
