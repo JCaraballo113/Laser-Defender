@@ -27,7 +27,7 @@ public class PlayerShooting : MonoBehaviour
         AudioSource.PlayClipAtPoint(LaserFX,transform.position);
         GameObject laserInstance = Instantiate(laser, transform.position, Quaternion.identity) as GameObject;
 
-        if (laserInstance != null)
+        if (laserInstance)
         {
             laserInstance.rigidbody2D.velocity = new Vector2(0f, LaserSpeed);
         }
