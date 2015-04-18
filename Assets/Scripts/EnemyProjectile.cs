@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyProjectile : MonoBehaviour {
+public class EnemyProjectile : MonoBehaviour 
+{
+    private float _Damage = 100f;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public float GetDamage()
+    {
+        return _Damage;
+    }
+
+    public void Hit()
+    {
+        Destroy(gameObject);
+    }
 }
