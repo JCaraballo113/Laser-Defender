@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        EnemyProjectile laser = other.gameObject.GetComponent<EnemyProjectile>();
+        Projectile laser = other.gameObject.GetComponent<Projectile>();
 
         if (laser)
         {

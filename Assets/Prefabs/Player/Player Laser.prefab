@@ -12,7 +12,7 @@ GameObject:
   - 50: {fileID: 5025640}
   - 61: {fileID: 6190202}
   - 114: {fileID: 11400684}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
