@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 100f;
+    public float Health = 100f;
     public Text HealthText;
+    public AudioClip DeathClip;
 
     private Shields _shipShields;
 
@@ -24,11 +25,12 @@ public class PlayerHealth : MonoBehaviour
             if (!_shipShields.ShieldsUp)
             {
                 _shipShields._shieldTimer = 0f;
-                health -= laser.GetDamage();
-                HealthText.text = "Health: " + health;
+                Health -= laser.GetDamage();
+                HealthText.text = "Health: " + Health;
 
-                if (health <= 0)
+                if (Health <= 0)
                 {
+                    AudioSource.PlayClipAtPoint(DeathClip,transform.position);
                     Destroy(gameObject);
                 }
             }

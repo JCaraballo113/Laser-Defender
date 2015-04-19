@@ -3407,8 +3407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d09d8f9fdc8e9469b4ab2f17132bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  Health: 100
   HealthText: {fileID: 817418879}
+  DeathClip: {fileID: 0}
 --- !u!212 &1404762787
 SpriteRenderer:
   m_ObjectHideFlags: 0
