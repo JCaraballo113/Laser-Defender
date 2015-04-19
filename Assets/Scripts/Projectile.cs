@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
-    private float _Damage = 100f;
+   public float Damage = 10f;
 
     public float GetDamage()
     {
-        return _Damage;
+        return Damage;
     }
 
     public void Hit()

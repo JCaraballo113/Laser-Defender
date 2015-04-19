@@ -3,8 +3,9 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float Health = 300f;
+    public float Health = 100f;
     public short killPoints = 150;
+    public AudioClip DeathClip;
 
     private ScoreKeeper _scoreKeeper;
 
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
             if (Health <= 0f)
             {
                 _scoreKeeper.UpdateScore(killPoints);
+                AudioSource.PlayClipAtPoint(DeathClip,transform.position);
                 Destroy(gameObject);
             }
         }

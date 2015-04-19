@@ -1,9 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 300f;
+    public float health = 100f;
+    public Text HealthText;
+
+    private Shields _shipShields;
+
+    void Start()
+    {
+        _shipShields = GameObject.FindObjectOfType<Shields>();
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,12 +21,19 @@ public class PlayerHealth : MonoBehaviour
 
         if (laser)
         {
-            health -= laser.GetDamage();
-
-            if (health <= 0)
+            if (!_shipShields.ShieldsUp)
             {
-                Destroy(gameObject);
+                _shipShields._shieldTimer = 0f;
+                health -= laser.GetDamage();
+                HealthText.text = "Health: " + health;
+
+                if (health <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
+
+ 
 }

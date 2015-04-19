@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b9b7450011cf1499c3aa6ac8d2fb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 300
+  Health: 100
+  DeathClip: {fileID: 8300000, guid: fd42784cc2612944ab293d6c9f0302b7, type: 3}
 --- !u!114 &11478574
 MonoBehaviour:
   m_ObjectHideFlags: 1
