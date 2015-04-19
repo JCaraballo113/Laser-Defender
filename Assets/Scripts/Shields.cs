@@ -10,8 +10,6 @@ public class Shields : MonoBehaviour
     public int ShieldCharges = 3;
     public bool ShieldsUp = true;
     public ShieldText ShieldText;
-
-    private bool playAudioOnce = false;
     public float _shieldTimer = 0f;
     private ParticleSystem _shields;
 
@@ -53,13 +51,13 @@ public class Shields : MonoBehaviour
 
     void ShieldsDown()
     {
-        ShieldCharges = 0;
-        ShieldsUp = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        if (!playAudioOnce)
+        if (ShieldsUp)
         {
-            playAudioOnce = true;
+            ShieldsUp = false;
             AudioSource.PlayClipAtPoint(ShieldsDownSFX, transform.position);
+            ShieldCharges = 0;
+            ShieldsUp = false;
+            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -75,7 +73,6 @@ public class Shields : MonoBehaviour
             _shieldTimer = 0f;
             ShieldCharges = 3;
             ShieldText.UpdateText(ShieldCharges);
-            playAudioOnce = false;
             AudioSource.PlayClipAtPoint(ShieldsUpSFX, transform.position);
         }
     }
