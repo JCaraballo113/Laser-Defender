@@ -7,12 +7,16 @@ public class PlayerHealth : MonoBehaviour
     public float Health = 100f;
     public Text HealthText;
     public AudioClip DeathClip;
+    public AudioClip HitClip;
+    public GameObject DeathExplosion;
 
     private Shields _shipShields;
+    private GameManager _gameManager;
 
     void Start()
     {
         _shipShields = GameObject.FindObjectOfType<Shields>();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
 
@@ -30,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
 
                 if (Health <= 0)
                 {
+                    _gameManager.GameOver();
+                    Instantiate(DeathExplosion, transform.position, Quaternion.identity);
                     AudioSource.PlayClipAtPoint(DeathClip,transform.position);
                     Destroy(gameObject);
                 }

@@ -114,7 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  DeathClip: {fileID: 8300000, guid: fd42784cc2612944ab293d6c9f0302b7, type: 3}
+  DeathClip: {fileID: 8300000, guid: 7bb18a69ac4d56343b6d64584860ee3f, type: 3}
+  DeathExplosion: {fileID: 127128, guid: d15085fc0db1c4846852819ccde237f4, type: 2}
 --- !u!114 &11478574
 MonoBehaviour:
   m_ObjectHideFlags: 1

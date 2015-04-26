@@ -8,15 +8,24 @@ public class EnemyShooting : MonoBehaviour
     public AudioClip ShotAudioClip;
 
     private float _fireRate = 0.5f;
+    private GameManager _gameManager;
+
+    void Start()
+    {
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
+    }
 
 
     void Update()
     {
         float probability = Time.deltaTime*_fireRate;
 
-        if (Random.value < probability)
+        if (!_gameManager.IsGameOver())
         {
-            Fire();
+            if (Random.value < probability)
+            {
+                Fire();
+            }
         }
     }
 
