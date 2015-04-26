@@ -130,6 +130,7 @@ MonoBehaviour:
   LaserPrefab: {fileID: 102384, guid: 41863df36b1079b418cb1c76e1e9f1ea, type: 2}
   LaserSpeed: 20
   ShotAudioClip: {fileID: 8300000, guid: a7811f3f41ac20e45a113def9fd0f27f, type: 3}
+  LaserDamage: 10
 --- !u!212 &21230604
 SpriteRenderer:
   m_ObjectHideFlags: 1

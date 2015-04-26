@@ -5,6 +5,8 @@ TagManager:
   tags:
   - Enemy
   - Formation
+  - Position
+  - Laser
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   User Layer 9: Enemies
   User Layer 10: EnemyProjectiles
   User Layer 11: FriendlyProjectiles
-  User Layer 12: 
+  User Layer 12: EnemyPositions
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 
