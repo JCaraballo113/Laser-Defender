@@ -38,7 +38,7 @@ public class EnemyShooting : MonoBehaviour
         if (enemyLaser)
         {
             enemyLaser.GetComponent<Projectile>().SetDamage(LaserDamage);
-            enemyLaser.rigidbody2D.velocity = new Vector2(0f,-LaserSpeed);
+            enemyLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,-LaserSpeed);
         }
     }
 }

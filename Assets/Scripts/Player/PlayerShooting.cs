@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
             Projectile projectile = laserInstance.GetComponent<Projectile>();
             projectile.transform.parent = this.transform;
             projectile.SetDamage(LaserDamage);
-            laserInstance.rigidbody2D.velocity = new Vector2(0f, LaserSpeed);
+            laserInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, LaserSpeed);
         }
     }
 }
