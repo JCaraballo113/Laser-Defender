@@ -21,9 +21,9 @@ public class Position : MonoBehaviour
 
     bool PositionOverlaps()
     {
-        transform.collider2D.enabled = false;
+        transform.GetComponent<Collider2D>().enabled = false;
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, 0.1f, Layer);
-        transform.collider2D.enabled = true;
+        transform.GetComponent<Collider2D>().enabled = true;
 
         if (collisions.Length > 0)
         {

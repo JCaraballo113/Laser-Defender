@@ -6,94 +6,113 @@ AnimatorController:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Player
-  serializedVersion: 2
+  serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
-  - serializedVersion: 3
+  - serializedVersion: 5
     m_Name: Base Layer
     m_StateMachine: {fileID: 110775900}
     m_Mask: {fileID: 0}
+    m_Motions: []
+    m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
-    m_StateMachineMotionSetIndex: 0
     m_DefaultWeight: 0
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
 --- !u!1101 &110105964
-Transition:
-  serializedVersion: 2
+AnimatorStateTransition:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 110275900}
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110260492}
-  m_TransitionDuration: .25
-  m_TransitionOffset: 0
-  m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
-    m_ExitTime: .75
-  m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: .25
+  m_TransitionOffset: 0
+  m_ExitTime: .75
+  m_HasExitTime: 1
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
   m_CanTransitionToSelf: 0
 --- !u!1102 &110260492
-State:
+AnimatorState:
+  serializedVersion: 5
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: da5193f1f7b71224ab68f51d2624682b, type: 2}
-  m_ParentStateMachine: {fileID: 110775900}
+  m_Transitions: []
+  m_StateMachineBehaviours: []
   m_Position: {x: 24, y: 36, z: 0}
   m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
   m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: da5193f1f7b71224ab68f51d2624682b, type: 2}
   m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &110275900
-State:
+AnimatorState:
+  serializedVersion: 5
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Arrive
   m_Speed: 1
   m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: 4703536a30343ed4296fb71b38684241, type: 2}
-  m_ParentStateMachine: {fileID: 110775900}
+  m_Transitions:
+  - {fileID: 110105964}
+  m_StateMachineBehaviours: []
   m_Position: {x: 24, y: -96, z: 0}
   m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
   m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 4703536a30343ed4296fb71b38684241, type: 2}
   m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1107 &110775900
-StateMachine:
-  serializedVersion: 2
+AnimatorStateMachine:
+  serializedVersion: 5
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110275900}
-  m_States:
-  - {fileID: 110275900}
-  - {fileID: 110260492}
-  m_ChildStateMachine: []
-  m_ChildStateMachinePosition: []
-  m_OrderedTransitions:
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: 110275900}
+    m_Position: {x: 24, y: -96, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110260492}
+    m_Position: {x: 24, y: 36, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions:
     data:
-      first: {fileID: 110260492}
+      first: {fileID: 110775900}
       second: []
-    data:
-      first: {fileID: 110275900}
-      second:
-      - {fileID: 110105964}
-    data:
-      first: {fileID: 0}
-      second: []
-  m_MotionSetCount: 1
+  m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -264, y: -12, z: 0}
+  m_EntryPosition: {x: 372, y: -96, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: 110275900}
